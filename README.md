@@ -124,15 +124,17 @@ These limitations motivate Part 2 of this project directly.
 
 ---
 
-## Part 2: Coming
+## Part 2: Future Work
 
 Part 2 will exploit the staggered rollout of PBOC bilateral currency swap lines 
 to test whether swap-line countries were insulated from the offshore RMB demand 
-shock identified here. Design:
+shock identified here. 
 
-- **Identification:** Staggered DiD (Callaway & Sant'Anna 2021 estimator) 
+The basis design is as follows:
+
+- **Identification:** Staggered DiD
   comparing swap-line vs non-swap-line countries using SWIFT payment data
-- **Heterogeneous effects:** Causal forest to identify which country 
+- **Heterogeneous effects:** Identify which country 
   characteristics predict differential shock exposure
 - **Connecting to literature:** Direct extension of Bahaj and Reis (2026) 
   into the post-2022 sanctions regime
