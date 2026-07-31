@@ -27,7 +27,7 @@ The result depends entirely on which market you look at.
 
 | Channel | Instrument | Sanctions Effect | Dominant Driver |
 |---|---|---|---|
-| Spot FX | CNY-CNH spread | **Not significant** | Dollar appreciation (DXY) |
+| Spot FX | CNY-CNH spread | **Not significant** | Dollar effects (DXY) |
 | Interbank funding | SHIBOR-HIBOR spread | **Highly significant** | Offshore RMB demand |
 
 **The spot exchange rate story that dominated 2022 headlines was a dollar 
