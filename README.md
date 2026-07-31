@@ -1,4 +1,4 @@
-# Dollar Weaponization and Offshore RMB Markets
+# Sanctions and Regime Shifts: Offshore RMB Demand in Spot and Interbank Markets
 ### High-Frequency Evidence from the 2022 Russia Sanctions
 ---
 
