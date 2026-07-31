@@ -31,7 +31,7 @@ The result depends entirely on which market you look at.
 | Interbank funding | SHIBOR-HIBOR spread | **Highly significant** | Offshore RMB demand |
 
 **The spot exchange rate story that dominated 2022 headlines was a dollar 
-story, not an RMB story.** Once Federal Reserve tightening is controlled for, 
+story, not an RMB story.** Once Federal Reserve tightening and global appetite for the dollar is controlled for, 
 the CNY-CNH sanctions effect disappears entirely.
 
 **The interbank funding market tells a different story.** The SHIBOR-HIBOR 
@@ -74,9 +74,9 @@ All data sourced from Bloomberg Professional terminal.
 | Offshore CNH | `CNH BGN Curncy` | Dependent (spread) |
 | 3M SHIBOR | `SHIF3M Index` | Dependent (spread) |
 | 3M CNH HIBOR | `HIHD01M Index` | Dependent (spread) |
-| VIX | `VIX Index` | Control — global risk sentiment |
-| DXY | `DXY Curncy` | Control — dollar strength |
-| US 3M Yield | `USGG3M Index` | Control — Fed policy |
+| VIX | `VIX Index` | Control, global risk sentiment |
+| DXY | `DXY Curncy` | Control, dollar strength |
+| US 3M Yield | `USGG3M Index` | Control, Fed policy |
 
 **Sample:** January 2, 2020 — December 31, 2025 (1,454 trading day 
 observations after cleaning)
