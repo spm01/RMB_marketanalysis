@@ -46,9 +46,9 @@ reserves frozen.
 
 **Model 1 — CNY-CNH Spread (levels, step dummies)**
 
-- Announce (step): β = −1.65 bps, p = 0.505 — *not significant*
-- Implement (step): β = −0.85 bps, p = 0.735 — *not significant*
-- ΔDXY: β = −6.22 bps, p < 0.001*** — *dominant predictor*
+- Announce (step): β = −1.65 bps, p = 0.505, *not significant*
+- Implement (step): β = −0.85 bps, p = 0.735, *not significant*
+- ΔDXY: β = −6.22 bps, p < 0.001***, *dominant predictor*
 - GARCH persistence α + β = 0.993
 
 **Model 2 — SHIBOR-HIBOR Spread (first difference, impulse dummies)**
