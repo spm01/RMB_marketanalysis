@@ -21,7 +21,7 @@ design with causal forest heterogeneous treatment effects.
 
 ---
 
-## Key Finding: Channel Decomposition
+## Key Finding: Channel Differences
 
 The result depends entirely on which market you look at.
 
