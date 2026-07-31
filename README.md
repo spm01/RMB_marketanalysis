@@ -55,7 +55,7 @@ reserves frozen.
 
 - Announce (impulse): β = −1.02 bps, p < 0.001***
 - Implement (impulse): β = −0.78 bps, p < 0.001***
-- ΔDXY: β = −0.047, p = 0.615 — *irrelevant in this channel*
+- ΔDXY: β = −0.047, p = 0.615, *irrelevant in this channel*
 - GARCH persistence α + β = 1.000 (permanent volatility shift)
 
 Both models use AR(1)-GARCH(1,1) with Student-t errors (ν = 4.24 and 2.97 
