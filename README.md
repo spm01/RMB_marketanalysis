@@ -4,8 +4,7 @@
 
 ## Overview
 
-This paper examines whether the February 2022 Russia sanctions — the largest 
-peacetime asset freeze in history — caused a permanent structural shift in 
+This paper examines whether the February 2022 Russia sanctions, caused a permanent structural shift in 
 offshore RMB market conditions.
 
 When the US and EU froze approximately $300 billion in Russian central bank 
