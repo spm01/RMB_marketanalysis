@@ -78,7 +78,7 @@ All data sourced from Bloomberg Professional terminal.
 | DXY | `DXY Curncy` | Control, dollar strength |
 | US 3M Yield | `USGG3M Index` | Control, Fed policy |
 
-**Sample:** January 2, 2020 — December 31, 2025 (1,454 trading day 
+**Sample:** January 2, 2020 - December 31, 2025 (1,454 trading day 
 observations after cleaning)
 
 Holiday treatment: Chinese market closures (Chinese New Year, National Day) 
@@ -91,7 +91,7 @@ tolerance, using the Shanghai Stock Exchange calendar.
 
 - **Stationarity:** ADF + Zivot-Andrews structural break tests on all 
   variables; nonstationary series first-differenced before inclusion
-- **Model:** AR(1)-GARCH(1,1), Student-t errors, robust covariance — 
+- **Model:** AR(1)-GARCH(1,1), Student-t errors, robust covariance, 
   following Engle (1982), Bollerslev (1986), Box and Tiao (1975)
 - **Shock identification:** Step dummies for the stationary CNY-CNH model; 
   impulse dummies for the differenced SHIBOR-HIBOR model (mathematically 
