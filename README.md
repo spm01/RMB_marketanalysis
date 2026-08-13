@@ -1,171 +1,140 @@
-# Sanctions and Regime Shifts: Offshore RMB Demand in Spot and Interbank Markets
-### High-Frequency Evidence from the 2022 Russia Sanctions
+# Dollar Dynamics, Not Dollar Weaponization
+### Reassessing the 2022 Russia Sanctions Effect on Onshore-Offshore RMB Pricing
+
 ---
 
 ## Overview
 
-This paper examines whether the February 2022 Russia sanctions, caused a permanent structural shift in 
-offshore RMB market conditions.
+Did the February 2022 Russia sanctions cause a permanent structural shift in
+offshore RMB pricing?
 
-When the US and EU froze approximately $300 billion in Russian central bank 
-reserves, every government holding dollar reserves watched. The economic logic 
-of a shift toward offshore RMB is straightforward: if dollar reserves can be 
-frozen unilaterally, the cost of holding them rises for any potential future 
-target. This paper asks whether that logic translated into measurable market 
-behavior.
+When the US and EU froze roughly $300 billion in Russian central bank reserves,
+every government holding dollar reserves took notice. The economic logic of a
+shift toward offshore RMB is straightforward: if dollar reserves can be frozen
+unilaterally, the cost of holding them rises for any potential future target.
+This paper tests whether that logic showed up in market prices.
 
-This is **Part 1 of a two-part research project** on RMB internationalization.  
-Part 2 will test whether PBOC bilateral currency swap lines mitigated the 
-demand shock identified here, using a staggered difference-in-differences 
-design with causal forest heterogeneous treatment effects.
+**It did not.** Once concurrent dollar dynamics are controlled for, the sanctions
+effect disappears entirely.
 
 ---
 
-## Key Finding: Channel Differences
+## Key Finding
 
-The result depends entirely on which market you look at.
+The CNY-CNH basis spread is the most widely cited market indicator of
+onshore-offshore RMB divergence. Its 2022 movement was a dollar story, not an
+RMB story.
 
-| Channel | Instrument | Sanctions Effect | Dominant Driver |
+| | Coefficient | p-value | Verdict |
 |---|---|---|---|
-| Spot FX | CNY-CNH spread | **Not significant** | Dollar effects (DXY) |
-| Interbank funding | SHIBOR-HIBOR spread | **Highly significant** | Offshore RMB demand |
+| Announcement (Feb 28, 2022) | −1.65 bps | 0.505 | Not significant |
+| Implementation (Mar 14, 2022) | −0.85 bps | 0.735 | Not significant |
+| ΔDXY | **−6.22 bps** | **<0.001** | **Dominant predictor** |
 
-**The spot exchange rate story that dominated 2022 headlines was a dollar 
-story, not an RMB story.** Once Federal Reserve tightening and global appetite for the dollar is controlled for, 
-the CNY-CNH sanctions effect disappears entirely.
+Every one-point DXY appreciation compresses the spread by 6.22 bps. 
 
-**The interbank funding market tells a different story.** The SHIBOR-HIBOR 
-differential compressed permanently following both shock dates, with dollar 
-dynamics playing no role (DXY p = 0.615). This is consistent with global 
-institutions shifting offshore RMB liquidity exposures after observing Russian 
-reserves frozen.
+**Secondary finding:** GARCH persistence of α + β = 0.993 indicates volatility
+shocks to the spread do not decay within the sample. The sanctions produced a
+volatility regime change without a level shift.
 
 ---
 
-## Results
+## Full Results
 
-**Model 1 — CNY-CNH Spread (levels, step dummies)**
+**AR(1)-GARCH(1,1), Student-t errors, robust covariance**
 
-- Announce (step): β = −1.65 bps, p = 0.505, *not significant*
-- Implement (step): β = −0.85 bps, p = 0.735, *not significant*
-- ΔDXY: β = −6.22 bps, p < 0.001***, *dominant predictor*
-- GARCH persistence α + β = 0.993
+| Variable | Coef. | Std. Err. | p-value |
+|---|---|---|---|
+| Constant | 1.047 | 1.332 | 0.432 |
+| AR(1) | 0.633 | 0.029 | <0.001 |
+| Announcement (step) | −1.652 | 2.479 | 0.505 |
+| Implementation (step) | −0.855 | 2.525 | 0.735 |
+| VIX | −0.072 | 0.061 | 0.235 |
+| ΔDXY | −6.218 | 0.777 | <0.001 |
+| ΔUS 3M yield | −0.625 | 9.604 | 0.948 |
+| GARCH α | 0.143 | 0.051 | 0.005 |
+| GARCH β | 0.850 | 0.055 | <0.001 |
+| ν (d.o.f.) | 4.239 | 0.500 | <0.001 |
 
-**Model 2 — SHIBOR-HIBOR Spread (first difference, impulse dummies)**
-
-- Announce (impulse): β = −1.02 bps, p < 0.001***
-- Implement (impulse): β = −0.78 bps, p < 0.001***
-- ΔDXY: β = −0.047, p = 0.615, *irrelevant in this channel*
-- GARCH persistence α + β = 1.000 (permanent volatility shift)
-
-Both models use AR(1)-GARCH(1,1) with Student-t errors (ν = 4.24 and 2.97 
-respectively), appropriate for the fat-tailed behavior of high-frequency 
-financial spreads.
+N = 1,453. Adj. R² = 0.375. AIC = 11,130.6. BIC = 11,188.6. α + β = 0.993.
 
 ---
 
 ## Data
 
-All data sourced from Bloomberg Professional terminal.
+All series from Bloomberg Professional terminal, January 2, 2020 to
+December 31, 2025.
 
-| Variable | Bloomberg Ticker | Role |
+| Variable | Ticker | Role |
 |---|---|---|
-| Onshore CNY | `CNY REGN Curncy` | Dependent (spread) |
-| Offshore CNH | `CNH BGN Curncy` | Dependent (spread) |
-| 3M SHIBOR | `SHIF3M Index` | Dependent (spread) |
-| 3M CNH HIBOR | `HIHD01M Index` | Dependent (spread) |
-| VIX | `VIX Index` | Control, global risk sentiment |
+| Onshore CNY | `CNY REGN Curncy` | Dependent (spread leg) |
+| Offshore CNH | `CNH BGN Curncy` | Dependent (spread leg) |
+| VIX | `VIX Index` | Control, risk sentiment |
 | DXY | `DXY Curncy` | Control, dollar strength |
-| US 3M Yield | `USGG3M Index` | Control, Fed policy |
+| US 3M yield | `USGG3M Index` | Control, Fed policy |
 
-**Sample:** January 2, 2020 - December 31, 2025 (1,454 trading day 
-observations after cleaning)
-
-Holiday treatment: Chinese market closures (Chinese New Year, National Day) 
-handled via last-observation-carried-forward with a maximum two-day gap 
-tolerance, using the Shanghai Stock Exchange calendar.
+Chinese market closures (Chinese New Year, National Day) handled via LOCF (last observation carried forward) with a
+two-day maximum gap tolerance, using the Shanghai Stock Exchange calendar.
 
 ---
 
 ## Methodology
 
-- **Stationarity:** ADF + Zivot-Andrews structural break tests on all 
-  variables; nonstationary series first-differenced before inclusion
-- **Model:** AR(1)-GARCH(1,1), Student-t errors, robust covariance, 
-  following Engle (1982), Bollerslev (1986), Box and Tiao (1975)
-- **Shock identification:** Step dummies for the stationary CNY-CNH model; 
-  impulse dummies for the differenced SHIBOR-HIBOR model (mathematically 
-  equivalent permanent level shift interpretation per Lütkepohl 2004)
-- **Two shock dates:** Announcement (Feb 28, 2022) and implementation 
-  (Mar 14, 2022), shifted to first available Monday after weekend announcements
+- **Stationarity:** ADF plus Zivot-Andrews structural break testing. CNY-CNH is
+  I(0) and modeled in levels; DXY and US 3M yield are I(1) and first-differenced
+- **Model:** AR(1)-GARCH(1,1) with Student-t errors, following Engle (1982) and
+  Bollerslev (1986)
+- **Shock identification:** Step dummies in the mean equation, following the
+  intervention analysis framework of Box and Tiao (1975)
+- **Two shock dates:** announcement and implementation, each rolled to the first
+  available trading day after the weekend announcement
 
----
-
-## Repository Structure
-The pipeline is self-contained and reproducible. Running `rmb_analysis_final.py` 
-with the underlying Bloomberg data produces all results in the paper.
-
-**Dependencies:** Python 3.13, `arch`, `statsmodels`, `pandas`, `numpy`, 
-`exchange_calendars`
+Run `rmb_analysis_final.py` with the underlying Bloomberg data to reproduce all
+results. Dependencies: Python 3.13, `arch`, `statsmodels`, `pandas`, `numpy`,
+`exchange_calendars`.
 
 ---
 
 ## Limitations
 
-- Identification rests on before-after variation in a single aggregate time 
-  series; no cross-sectional control group
-- PBOC intervention in offshore CNH markets during 2022 is an unresolved 
-  confounder that could independently affect HIBOR dynamics
-- SHIBOR-HIBOR result should be treated as strongly suggestive rather than 
-  definitive given near-unit-root persistence
+- Identification rests on before-after variation in a single aggregate time
+  series with no cross-sectional control group
+- PBOC intervention in offshore CNH markets during 2022 is an unresolved
+  confounder that could have suppressed spread movement independently
 
-These limitations motivate Part 2 of this project directly.
-
----
-
-## Part 2: Future Work
-
-Part 2 will exploit the staggered rollout of PBOC bilateral currency swap lines 
-to test whether swap-line countries were insulated from the offshore RMB demand 
-shock identified here. 
-
-The basis design is as follows:
-
-- **Identification:** Staggered DiD
-  comparing swap-line vs non-swap-line countries using SWIFT payment data
-- **Heterogeneous effects:** Identify which country 
-  characteristics predict differential shock exposure
-- **Connecting to literature:** Direct extension of Bahaj and Reis (2026) 
-  into the post-2022 sanctions regime
+**Abandoned interbank specification.** A SHIBOR-HIBOR funding channel test was
+attempted and dropped. The HIBOR series available on the terminal used is
+HKD-denominated rather than CNH, making the spread cross-currency rather than
+onshore-offshore. Because the HKD is pegged to the USD, the resulting spread
+contains a US rate component by construction. The correct approach is a synthetic
+offshore RMB rate built from USDCNH forward points under covered interest parity,
+following Bahaj and Reis (2026). Left to future work.
 
 ---
 
 ## References
 
-Bahaj, S. and Reis, R. (2026). "Jumpstarting an International Currency." 
+Bahaj, S. and Reis, R. (2026). "Jumpstarting an International Currency."
 *Review of Economic Studies*, 00, 1–32.
 
-Bollerslev, T. (1986). "Generalized Autoregressive Conditional 
+Bollerslev, T. (1986). "Generalized Autoregressive Conditional
 Heteroskedasticity." *Journal of Econometrics*, 31(3), 307–327.
 
-Box, G.E.P. and Tiao, G.C. (1975). "Intervention Analysis with Applications 
-to Economic and Environmental Problems." *JASA*, 70(349), 70–79.
+Box, G.E.P. and Tiao, G.C. (1975). "Intervention Analysis with Applications to
+Economic and Environmental Problems." *JASA*, 70(349), 70–79.
 
-Chupilkin, M., Javorcik, B., Peeva, A. and Plekhanov, A. (2023). "Exorbitant 
+Chupilkin, M., Javorcik, B., Peeva, A. and Plekhanov, A. (2023). "Exorbitant
 Privilege and Economic Sanctions." EBRD Working Paper No. 281.
 
-Engle, R.F. (1982). "Autoregressive Conditional Heteroscedasticity with 
-Estimates of the Variance of United Kingdom Inflation." *Econometrica*, 
-50(4), 987–1007.
+Engle, R.F. (1982). "Autoregressive Conditional Heteroscedasticity with
+Estimates of the Variance of United Kingdom Inflation." *Econometrica*, 50(4),
+987–1007.
 
-Lütkepohl, H. (2004). *Applied Time Series Econometrics*. Cambridge 
-University Press.
-
-Perron, P. (1989). "The Great Crash, the Oil Price Shock, and the Unit Root 
+Perron, P. (1989). "The Great Crash, the Oil Price Shock, and the Unit Root
 Hypothesis." *Econometrica*, 57(6), 1361–1401.
 
-Zivot, E. and Andrews, D.W.K. (1992). "Further Evidence on the Great Crash, 
-the Oil-Price Shock, and the Unit-Root Hypothesis." *JBES*, 10(3), 251–270.
+Zivot, E. and Andrews, D.W.K. (1992). "Further Evidence on the Great Crash, the
+Oil-Price Shock, and the Unit-Root Hypothesis." *JBES*, 10(3), 251–270.
 
 ---
 
